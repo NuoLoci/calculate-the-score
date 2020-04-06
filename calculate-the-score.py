@@ -29,7 +29,7 @@ def geturl():
     time.sleep(1)
     #需要给电脑1秒钟的反应时间
 
-    browser.get("http://jwxt.gduf.edu.cn/jsxsd/kscj/cjcx_query?Ves632DSdyV=NEW_XSD_XJCJ")
+    browser.get(initurl + "/kscj/cjcx_query?Ves632DSdyV=NEW_XSD_XJCJ")
     #跳转到对应的成绩查询界面
     time.sleep(1)
 
