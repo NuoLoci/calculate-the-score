@@ -10,3 +10,9 @@
 
 如果EDGE浏览器不是当前显示版本
 请自行登陆  https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver 网址下载对应driver文件，将其移动到edge根目录下
+
+然后运行exe文件
+按要求输入你学校的登入网址，账号密码信息
+此时你在该程序的目录文件夹下会出现一个html文件，那是你的成绩页面
+之后会提示你输入该页面共有几列，相应的项目分别在第几列，按实际情况填写即可
+之后程序会自动帮你统计相应的学分得分
