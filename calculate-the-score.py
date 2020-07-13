@@ -6,11 +6,14 @@ from bs4 import BeautifulSoup
 
 from selenium import webdriver
 
-
 def geturl():
-    initurl = input("请输入你学校的网址(例如http://jwxt.gduf.edu.cn)")
+    flagnum = 0
+    initurl = input("请输入你学校的网址(例如http://jwxt.gduf.edu.cn),如果是广金学生，请输入1即可")
+    if initurl == '1':
+        initurl = "http://jwxt.gduf.edu.cn"
+        flagnum = 1
     initurl = initurl + '/jsxsd'
-
+    
     username = input("请输入你的学号")
     userpassword = input("请输入你的密码")
 
@@ -45,7 +48,7 @@ def geturl():
     #选择最新打开的一个窗口
     browser.current_window_handle 
     #定位到当前浏览器窗口
-    url = browser.current_url
+    #测试使用代码，出错可以打印一下这个值 url = browser.current_url
     #定位到当前浏览器url
 
     f = open('成绩数据网页.html','wb')
@@ -53,11 +56,19 @@ def geturl():
     f.close()
     browser.quit()
 
-def seeurl():
-    allline = int(input("请输入你成绩查询页面共有几列："))
-    scoreline = int(input("请输入页面栏学分在第几列："))
-    GPAline = int(input("请输入页面栏绩点在第几列："))
-    typeline = int(input("请输入页面栏课程性质在第几列："))
+    return flagnum
+
+def seeurl(flagnum):
+    if flagnum == 0:
+        allline = int(input("请输入你成绩查询页面共有几列："))
+        scoreline = int(input("请输入页面栏学分在第几列："))
+        GPAline = int(input("请输入页面栏绩点在第几列："))
+        typeline = int(input("请输入页面栏课程性质在第几列："))
+    else:
+        allline = 11
+        scoreline = 6
+        GPAline = 8
+        typeline = 11
 
     f = open('成绩数据网页.html','rb')
     soupstr = str(BeautifulSoup(f,'lxml'))
@@ -120,9 +131,9 @@ def seeurl():
 
 def __init__():
     print("该软件是Maplelove写的，不做盈利，只方便大家查学分情况")
-    print("仅适用于强智科技构筑的学校教务系统，不适用于其他学校")
-    geturl()
-    seeurl()
-    input("目前的结果已经查询完毕啦")
+    print("仅适用于强智科技构筑的学校教务系统，不适用于其他系统")
+    flagnum = geturl()
+    seeurl(flagnum)
+    input("目前的结果已经查询完毕啦，请注意，该查询只能查询到当前已有的分数，但查询不到最新学期但未出分数的科目")
 
 __init__()
